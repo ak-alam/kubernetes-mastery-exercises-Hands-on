@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitor-app
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitor-app
+  namespace: monitor-app
+spec:
+  selector:
+    matchLabels:
+      app: monitor-app
+  template:
+    metadata:
+      labels:
+        app: monitor-app
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: monitor-app
+        image: script0kid/monitor:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitor-app-svc
+  namespace: monitor-app
+spec:
+  selector:
+    app: monitor-app
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 5000
+
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  # annotations:
+  #   cert-manager.io/cluster-issuer: kubeissuer
+  name: monitor-app-ingress
+  namespace: monitor-app
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: akbaralam.me
+    http:
+      paths:
+      - backend:
+          service:
+            name: monitor-app-svc
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts: 
+    - akbaralam.me
+    secretName: monitor-app-cert-secret
+
