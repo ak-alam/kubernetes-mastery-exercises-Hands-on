@@ -1,4 +1,4 @@
-## My kubernetes learning roadmap.
+## My kubernetes learning road map.
 
 ### Cluster Architecture, Installation & Configuration
 
@@ -11,3 +11,10 @@
 * Deployments
 * Jobs & Cronjobs
 * DaemonSets
+
+
+## Kubernetes Projects
+
+* Install and configure cert-manager and SSL.
+* Build Centralize Logging System (Loki, Grafana, Promtail, S3)
+* Migrate EBS volume data to EFS
