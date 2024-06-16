@@ -28,4 +28,5 @@
 * Migrate EBS volume data to EFS
 * KubeCost analyser
 * Monitoring Promethues & Grafana (Manual & kube-promethues-stack)
+* 3-tier-application-deployment
 
