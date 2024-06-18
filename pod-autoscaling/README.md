@@ -41,11 +41,13 @@ The VPA directory includes documentation and examples on how to set up Vertical 
 
 2. Navigate to the directory you are interested in:
 
-cd k8s-autoscaling-docs/HPA
+   ```sh
+    cd k8s-autoscaling-docs/HPA
 
-or 
+    or 
 
-cd k8s-autoscaling-docs/VPA
+   ```sh
+    cd k8s-autoscaling-docs/VPA
 
 3. Follow the instructions in the respective README files to set up HPA or VPA in your Kubernetes cluster.
 
@@ -55,7 +57,3 @@ Navigate to the directory you are interested in:
 ## Contributing
 Contributions are welcome! If you have improvements or new examples to add, please create a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Feel free to explore the directories and enhance your Kubernetes cluster with effective autoscaling configurations!
