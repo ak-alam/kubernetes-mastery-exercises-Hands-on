@@ -77,9 +77,43 @@ vpa-updater-786b96955c-bgp9d                1/1     Running   0          8s
 
 
 #### 2. Define resource limits and requests for your containers.
-Deploy the **deployment.yaml** sample deployment file in the directory.
+Deploy the **deployment.yaml** sample deployment file in the directory:
+```sh
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hamster
+spec:
+  selector:
+    matchLabels:
+      app: hamster
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hamster
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534 # nobody
+      containers:
+        - name: hamster
+          image: registry.k8s.io/ubuntu-slim:0.1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+          command: ["/bin/sh"]
+          args:
+            - "-c"
+            - "while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done"
+```
+
+
 
 #### 3. Create a VPA resource for your pods.
+
+
 
 ## Testing VPA
 To test your HPA deployemnt follow the given steps:
