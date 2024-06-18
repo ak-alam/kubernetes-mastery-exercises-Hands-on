@@ -157,7 +157,7 @@ kubectl get --watch Pods -l app=hamster
 ```
 
 #### 3. Describe new pods (To see the updated resources allocated by VPA)
-When a new hamster Pod is started, describe it and view the updated CPU and memory allocation.
+When a new hamster Pod is started, describe it and view the updated CPU and memory allocation. VPA will adjust the cpu & memory allocations for the deployment pods.
 ```sh
 kubectl describe pod hamster-xxxxxxxxx-xxxxx
 ```
@@ -185,7 +185,6 @@ Containers:
       memory:     262144k
 [...]
 ```
-
 
 ## Examples
 
