@@ -150,11 +150,41 @@ To test whether the VPA is working or not, describe the deployment pods for whic
 ```
 For this example application, 100 millicpu is less than the Pod needs to run, so it is CPU-constrained. It also reserves much less memory than it needs. The Vertical Pod Autoscaler **vpa-recommender** deployment analyzes the **hamster Pods** to see if the CPU and memory requirements are appropriate. If adjustments are needed, the **vpa-updater** relaunches the Pods with updated values.
 
+#### 2. Wait for new pods   
 Wait for the vpa-updater to launch a new hamster Pod. This should take a minute or two. You can monitor the Pods with the following command.
 ```sh
 kubectl get --watch Pods -l app=hamster
 ```
 
+#### 3. Describe New pods (To see the updated resources allocated by VPA)
+When a new hamster Pod is started, describe it and view the updated CPU and memory reservations.
+```sh
+kubectl describe pod hamster-xxxxxxxxx-xxxxx
+```
+An example output is as follows.
+```sh
+[...]
+Containers:
+  hamster:
+    Container ID:  docker://2c3e7b6fb7ce0d8c86444334df654af6fb3fc88aad4c5d710eac3b1e7c58f7db
+    Image:         registry.k8s.io/ubuntu-slim:0.1
+    Image ID:      docker-pullable://registry.k8s.io/ubuntu-slim@sha256:b6f8c3885f5880a4f1a7cf717c07242eb4858fdd5a84b5ffe35b1cf680ea17b1
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+    Args:
+      -c
+      while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done
+    State:          Running
+      Started:      Fri, 27 Sep 2019 10:37:08 -0700
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        587m
+      memory:     262144k
+[...]
+```
 
 
 ## Examples
