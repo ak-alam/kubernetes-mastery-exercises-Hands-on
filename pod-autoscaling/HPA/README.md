@@ -88,7 +88,7 @@ spec:
 
 #### 3. Create an HPA resource for your deployment or replication controller.
 
-**hpa.yaml** creates an HPA against the previously created deployment. This resource is responsible for scaling the deployment. We have specidifed the threshold of 50 %, which means if load on our deployment pods exceeds 50 % a new pod will be spun up. HPA scales the deployment between 1-10 pods as specified in the resource.
+**hpa.yaml** file in the directory creates an HPA against the previously created deployment. This resource is responsible for scaling the deployment. We have specidifed the threshold of 50 %, which means if load on our deployment pods exceeds 50 % a new pod will be spun up. HPA scales the deployment between 1-10 pods as specified in the resource.
 ```sh
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
