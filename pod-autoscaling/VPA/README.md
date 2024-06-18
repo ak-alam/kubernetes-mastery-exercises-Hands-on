@@ -39,9 +39,10 @@ metrics-server   1/1     1            1           6m
 
 Follow these step-by-step instructions to configure VPA in your Kubernetes cluster:
 
-1. Define resource limits and requests for your containers.
-2. Deploy the Vertical Pod Autoscaler components.
-3. Create a VPA resource for your pods.
+1. Deployment of VPA components on the kubernetes cluster.
+2. Define resource limits and requests for your containers.
+3. Deploy the Vertical Pod Autoscaler components.
+4. Create a VPA resource for your pods.
 
 ## Examples
 
