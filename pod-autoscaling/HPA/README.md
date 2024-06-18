@@ -13,6 +13,14 @@ Before setting up HPA in your Kubernetes cluster, ensure that you have the follo
 - A Kubernetes cluster running version 1.8 or later.
 - The Kubernetes Metrics Server installed and running in your cluster.
 
+### Deploy the Metrics Server
+
+Deploy the Metrics Server with the following command:
+
+```sh
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
 ## Setup Guide
 
 Follow these step-by-step instructions to configure HPA in your Kubernetes cluster:
@@ -20,6 +28,11 @@ Follow these step-by-step instructions to configure HPA in your Kubernetes clust
 1. Define resource requests and limits for your pods.
 2. Enable metrics collection in your Kubernetes cluster.
 3. Create an HPA resource for your deployment or replication controller.
+
+Verify that the metrics-server deployment is running the desired number of Pods with the following command:
+```sh
+kubectl get deployment metrics-server -n kube-system
+```
 
 ## Examples
 
