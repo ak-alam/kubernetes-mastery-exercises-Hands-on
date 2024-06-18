@@ -161,14 +161,14 @@ When a new hamster Pod is started, describe it and view the updated CPU and memo
 ```sh
 kubectl describe pod hamster-xxxxxxxxx-xxxxx
 ```
-An example output is as follows.
+An example output is as follows:
 ```sh
 [...]
 Containers:
   hamster:
-    Container ID:  docker://2c3e7b6fb7ce0d8c86444334df654af6fb3fc88aad4c5d710eac3b1e7c58f7db
+    Container ID:  docker://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     Image:         registry.k8s.io/ubuntu-slim:0.1
-    Image ID:      docker-pullable://registry.k8s.io/ubuntu-slim@sha256:b6f8c3885f5880a4f1a7cf717c07242eb4858fdd5a84b5ffe35b1cf680ea17b1
+    Image ID:      docker-pullable://registry.k8s.io/ubuntu-slim@sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     Port:          <none>
     Host Port:     <none>
     Command:
@@ -177,7 +177,7 @@ Containers:
       -c
       while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done
     State:          Running
-      Started:      Fri, 27 Sep 2019 10:37:08 -0700
+      Started:      Fri, 19 Jun 2024 10:37:08 -0700
     Ready:          True
     Restart Count:  0
     Requests:
