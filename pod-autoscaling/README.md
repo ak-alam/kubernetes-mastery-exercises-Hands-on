@@ -1,10 +1,10 @@
 # Kubernetes Autoscaling Documentation
 
-This repository contains information and step-by-step guides on setting up Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) in Kubernetes. Autoscaling is a crucial aspect of Kubernetes that ensures your applications can handle varying loads by automatically adjusting the number of pods or the resources allocated to them.
+This directory contains information and step-by-step guides on setting up Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) in Kubernetes. Autoscaling is a crucial aspect of Kubernetes that ensures your applications can handle varying loads by automatically adjusting the number of pods or the resources allocated to them.
 
 ## Directory Structure
 
-The repository is organized into the following directories:
+The direcrory is organized into the following directories:
 
 - **HPA/**: Contains information and steps to configure Horizontal Pod Autoscaler in Kubernetes.
 - **VPA/**: Contains information and steps to configure Vertical Pod Autoscaler in Kubernetes.
