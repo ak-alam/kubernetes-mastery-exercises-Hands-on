@@ -50,19 +50,19 @@ Follow these step-by-step instructions to configure VPA in your Kubernetes clust
 ```sh
 git clone https://github.com/kubernetes/autoscaler.git
 ```
-**ii.**Change to the vertical-pod-autoscaler directory.
+**ii.** Change to the vertical-pod-autoscaler directory.
 ```sh
 cd autoscaler/vertical-pod-autoscaler/
 ```
-**iii.**(Optional) If you have already deployed another version of the Vertical Pod Autoscaler, remove it with the following command.
+**iii.** (Optional) If you have already deployed another version of the Vertical Pod Autoscaler, remove it with the following command.
 ```sh
 ./hack/vpa-down.sh
 ```
-**iv.**Deploy the Vertical Pod Autoscaler to your cluster with the following command.
+**iv.** Deploy the Vertical Pod Autoscaler to your cluster with the following command.
 ```sh
 ./hack/vpa-up.sh
 ```
-**v.**Verify that the Vertical Pod Autoscaler Pods have been created successfully.
+**v.** Verify that the Vertical Pod Autoscaler Pods have been created successfully.
 ```sh
 kubectl get pods -n kube-system
 ```
