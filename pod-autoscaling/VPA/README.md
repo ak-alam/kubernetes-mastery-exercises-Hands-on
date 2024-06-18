@@ -168,7 +168,7 @@ Containers:
   hamster:
     Container ID:  docker://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     Image:         registry.k8s.io/ubuntu-slim:0.1
-    Image ID:      docker-pullable://registry.k8s.io/ubuntu-slim@sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    Image ID:      docker-pullable://registry.k8s.io/ubuntu-slim@sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     Port:          <none>
     Host Port:     <none>
     Command:
