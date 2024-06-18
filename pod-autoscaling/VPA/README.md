@@ -157,7 +157,7 @@ kubectl get --watch Pods -l app=hamster
 ```
 
 #### 3. Describe New pods (To see the updated resources allocated by VPA)
-When a new hamster Pod is started, describe it and view the updated CPU and memory reservations.
+When a new hamster Pod is started, describe it and view the updated CPU and memory allocation.
 ```sh
 kubectl describe pod hamster-xxxxxxxxx-xxxxx
 ```
