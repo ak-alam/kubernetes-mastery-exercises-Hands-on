@@ -41,6 +41,5 @@ To use HPA effectively in your Kubernetes cluster, consider the following best p
 
 Contributions to this HPA documentation are welcome! If you have improvements or new examples to add, please create a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
 
-This documentation is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
