@@ -45,36 +45,50 @@ Follow these step-by-step instructions to configure VPA in your Kubernetes clust
 4. Create a VPA resource for your pods.
 
 
-#### 1. Deployment of VPA components on the kubernetes cluster
-To deploy the Vertical Pod Autoscaler, clone the kubernetes/autoscaler GitHub repository.
-```sh
-git clone https://github.com/kubernetes/autoscaler.git
-```
-Change to the vertical-pod-autoscaler directory.
-```sh
-cd autoscaler/vertical-pod-autoscaler/
-```
-(Optional) If you have already deployed another version of the Vertical Pod Autoscaler, remove it with the following command.
-```sh
-./hack/vpa-down.sh
-```
-Deploy the Vertical Pod Autoscaler to your cluster with the following command.
-```sh
-./hack/vpa-up.sh
-```
-Verify that the Vertical Pod Autoscaler Pods have been created successfully.
-```sh
-kubectl get pods -n kube-system
-```
-An example output is as follows:
-```sh
-NAME                                        READY   STATUS    RESTARTS   AGE
-[...]
-metrics-server-8459fc497-kfj8w              1/1     Running   0          83m
-vpa-admission-controller-68c748777d-ppspd   1/1     Running   0          7s
-vpa-recommender-6fc8c67d85-gljpl            1/1     Running   0          8s
-vpa-updater-786b96955c-bgp9d                1/1     Running   0          8s
-```
+#### 1. Deployment of VPA components on the Kubernetes cluster
+
+To deploy the Vertical Pod Autoscaler, follow these steps:
+
+    i. **Clone the Kubernetes Autoscaler GitHub repository:**
+
+       ```sh
+       git clone https://github.com/kubernetes/autoscaler.git
+       ```
+
+    ii. **Change to the vertical-pod-autoscaler directory:**
+
+       ```sh
+       cd autoscaler/vertical-pod-autoscaler/
+       ```
+
+    iii. **(Optional) Remove any previously deployed version of the Vertical Pod Autoscaler:**
+
+       ```sh
+       ./hack/vpa-down.sh
+       ```
+
+    iv. **Deploy the Vertical Pod Autoscaler to your cluster:**
+
+       ```sh
+       ./hack/vpa-up.sh
+       ```
+
+    v. **Verify that the Vertical Pod Autoscaler Pods have been created successfully:**
+
+       ```sh
+       kubectl get pods -n kube-system
+       ```
+
+       An example output is as follows:
+
+       ```sh
+       NAME                                        READY   STATUS    RESTARTS   AGE
+       [...]
+       metrics-server-8459fc497-kfj8w              1/1     Running   0          83m
+       vpa-admission-controller-68c748777d-ppspd   1/1     Running   0          7s
+       vpa-recommender-6fc8c67d85-gljpl            1/1     Running   0          8s
+       vpa-updater-786b96955c-bgp9d                1/1     Running   0          8s
+       ```
 
 
 
