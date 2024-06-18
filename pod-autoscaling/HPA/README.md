@@ -37,9 +37,13 @@ metrics-server   1/1     1            1           6m
 
 Follow these step-by-step instructions to configure HPA in your Kubernetes cluster:
 
-1. Define resource requests and limits for your pods.
-2. Enable metrics collection in your Kubernetes cluster.
+1. Define resource requests and limits for your pods inside a deployment.
+2. Create a service for your deployment (Only to test your deployment autoscaling).
 3. Create an HPA resource for your deployment or replication controller.
+
+#### 1. Define resource requests and limits for your pods inside a deployment.
+The deployment.yaml file in the directory contains a sample deployment file to test our HPA. 
+service.yaml creates a service against this deployment & hpa.yaml creates an HPA against this deployment.
 
 
 ## Examples
