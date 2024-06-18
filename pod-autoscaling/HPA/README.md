@@ -42,7 +42,34 @@ Follow these step-by-step instructions to configure HPA in your Kubernetes clust
 3. Create an HPA resource for your deployment or replication controller.
 
 #### 1. Define resource requests and limits for your pods inside a deployment.
-The deployment.yaml file in the directory contains a sample deployment file to test our HPA. 
+The **deployment.yaml** file in the directory contains a sample deployment file to test our HPA.
+```sh
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-apache
+spec:
+  selector:
+    matchLabels:
+      run: php-apache
+  template:
+    metadata:
+      labels:
+        run: php-apache
+    spec:
+      containers:
+      - name: php-apache
+        image: registry.k8s.io/hpa-example
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+```
+
+
 service.yaml creates a service against this deployment & hpa.yaml creates an HPA against this deployment.
 
 
