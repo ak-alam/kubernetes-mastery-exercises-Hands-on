@@ -38,17 +38,18 @@ The VPA directory includes documentation and examples on how to set up Vertical 
 1. Clone the repository to your local machine:
    ```sh
    git clone https://github.com/ak-alam/kubernetes-mastery-exercises-Hands-on.git
-
+    ```
 2. Navigate to the directory you are interested in:
 
    ```sh
     cd k8s-autoscaling-docs/HPA
+   ```
 
     or 
 
    ```sh
     cd k8s-autoscaling-docs/VPA
-
+   ``` 
 3. Follow the instructions in the respective README files to set up HPA or VPA in your Kubernetes cluster.
 
 Navigate to the directory you are interested in:
