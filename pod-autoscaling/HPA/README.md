@@ -12,6 +12,7 @@ Before setting up HPA in your Kubernetes cluster, ensure that you have the follo
 
 - A Kubernetes cluster running version 1.8 or later.
 - The Kubernetes Metrics Server installed and running in your cluster.
+- You are using a kubectl client that is configured to communicate with your Amazon EKS cluster.
 
 #### Deploy the Metrics Server
 
