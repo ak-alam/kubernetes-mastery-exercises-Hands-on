@@ -31,6 +31,7 @@ The VPA directory includes documentation and examples on how to set up Vertical 
 - **Introduction to VPA**: An overview of what VPA is and its benefits.
 - **Prerequisites**: Requirements needed before setting up VPA.
 - **Setup Guide**: Step-by-step instructions to configure VPA.
+- **Testing VPA**: Testing VPA scaling with a sample deployment
 - **Examples**: Example configurations and usage scenarios.
 - **Best Practices**: Tips and best practices for using VPA effectively.
 
