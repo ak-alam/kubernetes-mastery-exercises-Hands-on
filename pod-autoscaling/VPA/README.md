@@ -109,10 +109,29 @@ spec:
             - "while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; done"
 ```
 
-
-
 #### 3. Create a VPA resource for your pods.
-
+Deploy the **vpa.yaml** sample vpa file in the directory:
+```sh
+apiVersion: "autoscaling.k8s.io/v1"
+kind: VerticalPodAutoscaler
+metadata:
+  name: hamster-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: hamster
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 100m
+          memory: 50Mi
+        maxAllowed:
+          cpu: 1
+          memory: 500Mi
+        controlledResources: ["cpu", "memory"]
+```
 
 
 ## Testing VPA
