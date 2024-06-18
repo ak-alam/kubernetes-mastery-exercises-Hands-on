@@ -13,7 +13,7 @@ Before setting up HPA in your Kubernetes cluster, ensure that you have the follo
 - A Kubernetes cluster running version 1.8 or later.
 - The Kubernetes Metrics Server installed and running in your cluster.
 
-### Deploy the Metrics Server
+#### Deploy the Metrics Server
 
 Deploy the Metrics Server with the following command:
 
@@ -21,7 +21,7 @@ Deploy the Metrics Server with the following command:
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
-## Setup Guide
+#### Setup Guide
 
 Follow these step-by-step instructions to configure HPA in your Kubernetes cluster:
 
