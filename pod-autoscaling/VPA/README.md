@@ -156,7 +156,7 @@ Wait for the vpa-updater to launch a new hamster Pod. This should take a minute 
 kubectl get --watch Pods -l app=hamster
 ```
 
-#### 3. Describe New pods (To see the updated resources allocated by VPA)
+#### 3. Describe new pods (To see the updated resources allocated by VPA)
 When a new hamster Pod is started, describe it and view the updated CPU and memory allocation.
 ```sh
 kubectl describe pod hamster-xxxxxxxxx-xxxxx
