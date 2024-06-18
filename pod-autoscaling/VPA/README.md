@@ -137,6 +137,24 @@ spec:
 ## Testing VPA
 To test your HPA deployemnt follow the given steps:
 
+#### 1. Describe deployment pods for which VPA is configured   
+To test whether the VPA is working or not, describe the deployment pods for which VPA was configured. As we can see, that in our deployment we have specified the pods resource requests to be 100m (for cpu) & 50Mi (for memory). 
+```sh
+      containers:
+        - name: hamster
+          image: registry.k8s.io/ubuntu-slim:0.1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 50Mi
+```
+For this example application, 100 millicpu is less than the Pod needs to run, so it is CPU-constrained. It also reserves much less memory than it needs. The Vertical Pod Autoscaler **vpa-recommender** deployment analyzes the **hamster Pods** to see if the CPU and memory requirements are appropriate. If adjustments are needed, the **vpa-updater** relaunches the Pods with updated values.
+
+Wait for the vpa-updater to launch a new hamster Pod. This should take a minute or two. You can monitor the Pods with the following command.
+```sh
+kubectl get --watch Pods -l app=hamster
+```
+
 
 
 ## Examples
