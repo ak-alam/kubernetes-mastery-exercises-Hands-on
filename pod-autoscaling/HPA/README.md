@@ -113,6 +113,42 @@ We can also create HPA with the following single command as well:
 kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
 ```
 
+Describe the autoscaler with the following command to view its details.
+```sh
+kubectl get hpa
+```
+An example output is as follows.
+```sh
+NAME         REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+php-apache   Deployment/php-apache   0%/50%    1         10        1          51s
+```
+
+
+## Testing HPA
+To test your HPA deployemnt follow the given steps:
+
+#### 1. Create a load for the apache web server
+Execute the following command to run a sample deployment to test the HPA by applying load on the previously deployed containers:
+```sh
+kubectl run -i \
+    --tty load-generator \
+    --rm --image=busybox \
+    --restart=Never \
+    -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
+```
+
+#### 2. Watch the deployment scale out
+To watch the deployment scale out, periodically run the following command in a separate terminal from the terminal that you ran the previous step in.
+```sh
+kubectl get hpa php-apache
+```
+An example output is as follows.
+```sh
+NAME         REFERENCE               TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
+php-apache   Deployment/php-apache   250%/50%   1         10        5          4m44s
+```
+
+
 
 ## Examples
 

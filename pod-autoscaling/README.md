@@ -18,6 +18,7 @@ The HPA directory includes documentation and examples on how to set up Horizonta
 - **Introduction to HPA**: An overview of what HPA is and its benefits.
 - **Prerequisites**: Requirements needed before setting up HPA.
 - **Setup Guide**: Step-by-step instructions to configure HPA.
+- **Testing HPA**: Testing HPA scaling with a sample deployment
 - **Examples**: Example configurations and usage scenarios.
 - **Best Practices**: Tips and best practices for using HPA effectively.
 
