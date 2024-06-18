@@ -13,6 +13,27 @@ Before setting up VPA in your Kubernetes cluster, ensure that you have the follo
 - A Kubernetes cluster running version 1.10 or later.
 - The Metrics Server installed and running in your cluster.
 - The Custom Metrics API enabled in your cluster (optional, for custom metrics support).
+- You are using a kubectl client that is configured to communicate with your Kubernetes cluster.
+
+#### Deploy the Metrics Server
+
+Deploy the Metrics Server with the following command:
+
+```sh
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+Verify that the metrics-server deployment is running the desired number of Pods with the following command:
+```sh
+kubectl get deployment metrics-server -n kube-system
+```
+An example output is as follows:
+
+```sh
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+metrics-server   1/1     1            1           6m
+```
+
 
 ## Setup Guide
 
