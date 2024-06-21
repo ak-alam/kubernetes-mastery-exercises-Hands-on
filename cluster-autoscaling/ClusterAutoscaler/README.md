@@ -79,7 +79,12 @@ After udpating the cluster name apply the deployment to the cluster.
 kubectl apply -f cluster-autoscalar.yaml
 ```
 
-<span style="color: red;">Important: This text will be red.</span>
+
+This will render as:
+
+```diff
+- This text will be red
+
 
 
 
