@@ -82,7 +82,7 @@ kubectl apply -f cluster-autoscalar.yaml
 
 #### Important Note
 ```diff
-- We have created a service account with the name cluster-autoscaler with the eksctl command
+We have created a service account with the name cluster-autoscaler with the eksctl command
 ```
 
 
