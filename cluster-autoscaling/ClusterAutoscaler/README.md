@@ -17,7 +17,9 @@ Before setting up the Cluster Autoscaler in your Kubernetes cluster, ensure that
 
 Follow these step-by-step instructions to configure the Cluster Autoscaler in your Kubernetes cluster:
 
-<!-- Add your setup steps here -->
+1. Creation of an IAM policy for Cluster Autoscalar.
+2. Creation of Service Account in EKS.
+3. Deployment of Cluster Autoscalar.
 
 ## Examples
 
