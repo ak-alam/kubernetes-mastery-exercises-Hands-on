@@ -59,6 +59,7 @@ eksctl create iamserviceaccount \
   --attach-policy-arn arn:aws:iam::YOUR-ACCOUNT-ID:policy/ClusterAutoscalerPolicy \
   --approve
 ```
+
 #### 3. Deployment of Cluster Autoscalar
 To deploy the cluster autoscalar use the **cluster-autoscalar.yaml** deployment file. Update the cluster name in the `node-group-auto-discovery` before deploying the file to the cluster.
 ```yaml
@@ -80,7 +81,7 @@ kubectl apply -f cluster-autoscalar.yaml
 ```
 
 
-#### Important Note
+### Important Note:
 We have created a service account with the name `cluster-autoscaler` with the help of eksctl command. IF you want to change it we have to update the `serviceAccount` name in the `cluster-autoscalar.yaml` deployment file as well. `serviceAccount` name should be updated at the following occurances: 
 
 **i.** Inside the `deployment` config:
@@ -129,6 +130,20 @@ subjects:
     namespace: kube-system
 ```
 
+Also if you don't want to create `serviceAccount` with `eksctl` command you can create it, alongside the `cluster-autosclar` deployment, but be carefull while manually creating the role & policy, & adding `role-arn` annotation inside the `serviceAccount` resource in the `cluster-autosclar.yaml` file. As of know this part is commented out, but if want to do it manually you can uncommment it.
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    k8s-addon: cluster-autoscaler.addons.k8s.io
+    k8s-app: cluster-autoscaler
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::XXXXXXXXXXXX:role/AmazonEKSClusterAutoscalerRole
+  name: cluster-autoscaler
+  namespace: kube-system
+```
 
 ## Examples
 
