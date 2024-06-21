@@ -85,7 +85,7 @@ We have created a service account with the name `cluster-autoscaler` with the he
 
 **i.** Inside the `deployment` config:
 <pre>
-```yaml
+```
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
