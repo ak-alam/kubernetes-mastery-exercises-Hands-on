@@ -62,7 +62,16 @@ eksctl create iamserviceaccount \
 #### 3. Deployment of Cluster Autoscalar
 To deploy the cluster autoscalar use the **cluster-autoscalar.yaml** deployment file. Update the cluster name in the `node-group-auto-discovery` before deploying the file to the cluster.
 ```sh
---node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/CLUSTER_NAME # Update cluster
+          command: 
+            - ./cluster-autoscaler
+            - --v=4
+            - --stderrthreshold=info
+            - --cloud-provider=aws
+            - --skip-nodes-with-local-storage=false
+            - --expander=least-waste
+            - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/CLUSTER_NAME # Update cluster
+            - --balance-similar-node-groups
+            - --skip-nodes-with-system-pods=false
 ```
 
 ## Examples
