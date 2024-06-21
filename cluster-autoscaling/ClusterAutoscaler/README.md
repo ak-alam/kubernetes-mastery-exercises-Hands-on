@@ -130,7 +130,7 @@ subjects:
     namespace: kube-system
 ```
 
-Also if you don't want to create `serviceAccount` with `eksctl` command you can create it, alongside the `cluster-autosclar` deployment, but be carefull while manually creating the role & policy, & adding `role-arn` annotation inside the `serviceAccount` resource in the `cluster-autosclar.yaml` file. As of know this part is commented out, but if want to do it manually you can uncommment it.
+Also if you don't want to create `serviceAccount` with `eksctl` command you can create it, alongside the `cluster-autosclar` deployment, but be carefull while manually creating the role, policy & adding `role-arn` annotation inside the `serviceAccount` resource, in the `cluster-autosclar.yaml` file. As of now, this part is commented out, but if want to do it manually you can uncommment it.
 
 ```yaml
 apiVersion: v1
