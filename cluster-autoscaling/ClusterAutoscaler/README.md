@@ -80,10 +80,9 @@ kubectl apply -f cluster-autoscalar.yaml
 ```
 
 
-This will render as:
-
+#### Important Note
 ```diff
-- This text will be red
+- We have created a service account with the name cluster-autoscaler with the eksctl command
 ```
 
 
