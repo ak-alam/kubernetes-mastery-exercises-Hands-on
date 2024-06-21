@@ -84,7 +84,7 @@ This will render as:
 
 ```diff
 - This text will be red
-
+```
 
 
 
