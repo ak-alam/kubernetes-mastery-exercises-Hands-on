@@ -23,7 +23,7 @@ Follow these step-by-step instructions to configure the Cluster Autoscaler in yo
 
 #### 1. Creation of an IAM policy for Cluster Autoscalar.
 Create an IAM policy that will allow Autoscalar to access autoscaling groups. Required permissions can be seen in the **cluster-autoscalar.json** file:
-```sh
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -61,7 +61,7 @@ eksctl create iamserviceaccount \
 ```
 #### 3. Deployment of Cluster Autoscalar
 To deploy the cluster autoscalar use the **cluster-autoscalar.yaml** deployment file. Update the cluster name in the `node-group-auto-discovery` before deploying the file to the cluster.
-```sh
+```yaml
           command: 
             - ./cluster-autoscaler
             - --v=4
