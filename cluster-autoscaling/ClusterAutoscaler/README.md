@@ -81,10 +81,52 @@ kubectl apply -f cluster-autoscalar.yaml
 
 
 #### Important Note
-```diff
-We have created a service account with the name cluster-autoscaler with the eksctl command
+We have created a service account with the name `cluster-autoscaler` with the help of eksctl command. IF you want to change it we have to update the `serviceAccount` name in the `cluster-autoscalar.yaml` deployment file as well. `serviceAccount` name should be updated at the following occurances: 
+
+**i.** Inside the `deployment` config:
+```sh
+    spec:
+      serviceAccountName: cluster-autoscaler
+      containers:
+```
+**ii.** Inside the `ClusterRoleBinding` config:
+```sh
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-autoscaler
+  labels:
+    k8s-addon: cluster-autoscaler.addons.k8s.io
+    k8s-app: cluster-autoscaler
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-autoscaler
+subjects:
+  - kind: ServiceAccount
+    name: cluster-autoscaler
+    namespace: kube-system
 ```
 
+**iii.** Inside the `RoleBinding` config:
+```sh
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cluster-autoscaler
+  namespace: kube-system
+  labels:
+    k8s-addon: cluster-autoscaler.addons.k8s.io
+    k8s-app: cluster-autoscaler
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cluster-autoscaler
+subjects:
+  - kind: ServiceAccount
+    name: cluster-autoscaler
+    namespace: kube-system
+```
 
 
 ## Examples
