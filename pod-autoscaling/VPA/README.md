@@ -78,7 +78,7 @@ vpa-updater-786b96955c-bgp9d                1/1     Running   0          8s
 
 #### 2. Define resource limits and requests for your containers.
 Deploy the **deployment.yaml** sample deployment file in the directory:
-```sh
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -111,7 +111,7 @@ spec:
 
 #### 3. Create a VPA resource for your pods.
 Deploy the **vpa.yaml** sample vpa file in the directory:
-```sh
+```yaml
 apiVersion: "autoscaling.k8s.io/v1"
 kind: VerticalPodAutoscaler
 metadata:
@@ -139,7 +139,7 @@ To test your HPA deployemnt follow the given steps:
 
 #### 1. Describe deployment pods for which VPA is configured   
 To test whether the VPA is working or not, describe the deployment pods for which VPA was configured. As we can see, that in our deployment we have specified the pods resource requests to be 100m (for cpu) & 50Mi (for memory). 
-```sh
+```yaml
       containers:
         - name: hamster
           image: registry.k8s.io/ubuntu-slim:0.1

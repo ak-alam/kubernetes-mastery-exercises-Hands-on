@@ -44,7 +44,7 @@ Follow these step-by-step instructions to configure HPA in your Kubernetes clust
 
 #### 1. Define resource requests and limits for your pods inside a deployment.
 The **deployment.yaml** file in the directory contains a sample deployment file to test our HPA. We have also defined our resource limit (cpu utilization) on container level as well.   
-```sh
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -73,7 +73,7 @@ spec:
 #### 2. Create a service for your deployment.
 
 **service.yaml** file in the directory creates a service against the previously created deployment. We will use this service to test the HPA. 
-```sh
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -90,7 +90,7 @@ spec:
 #### 3. Create an HPA resource for your deployment or replication controller.
 
 **hpa.yaml** file in the directory creates an HPA against the previously created deployment. This resource is responsible for scaling the deployment. We have specidifed the threshold of 50 %, which means if load on our deployment pods exceeds 50 % a new pod will be spun up. HPA scales the deployment between 1-10 pods as specified in the resource.
-```sh
+```yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
