@@ -21,6 +21,47 @@ Follow these step-by-step instructions to configure the Cluster Autoscaler in yo
 2. Creation of Service Account in EKS.
 3. Deployment of Cluster Autoscalar.
 
+#### 1. Creation of an IAM policy for Cluster Autoscalar.
+Create an IAM policy that will allow Autoscalar to access autoscaling groups. Required permissions can be seen in the **cluster-autoscalar.json** file:
+```sh
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeAutoScalingInstances",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeTags",
+                "autoscaling:SetDesiredCapacity",
+                "autoscaling:TerminateInstanceInAutoScalingGroup",
+                "ec2:DescribeLaunchTemplateVersions"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+To create the policy use the following command:
+```sh
+aws iam create-policy --policy-name ClusterAutoscalerPolicy --policy-document file://cluster-autoscalar.json
+```
+
+#### 2. Creation of Service Account in EKS.
+Use the eksctl command to create an IAM service account. Attach the policy created in the previous step to this service account. This service account will allow the cluster autoscalar to access the desired resources.
+```sh
+eksctl create iamserviceaccount \
+  --name cluster-autoscaler \
+  --namespace kube-system \
+  --cluster YOUR-CLUSTER-NAME \
+  --role-name your-role-name \
+  --attach-policy-arn arn:aws:iam::YOUR-ACCOUNT-ID:policy/ClusterAutoscalerPolicy \
+  --approve
+
+```
+
+
 ## Examples
 
 Here are some example configurations and usage scenarios for the Cluster Autoscaler:
