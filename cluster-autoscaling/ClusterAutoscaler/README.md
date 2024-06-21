@@ -84,11 +84,14 @@ kubectl apply -f cluster-autoscalar.yaml
 We have created a service account with the name `cluster-autoscaler` with the help of eksctl command. IF you want to change it we have to update the `serviceAccount` name in the `cluster-autoscalar.yaml` deployment file as well. `serviceAccount` name should be updated at the following occurances: 
 
 **i.** Inside the `deployment` config:
-```sh
+<pre>
+```yaml
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
 ```
+</pre>
+
 **ii.** Inside the `ClusterRoleBinding` config:
 ```sh
 apiVersion: rbac.authorization.k8s.io/v1
