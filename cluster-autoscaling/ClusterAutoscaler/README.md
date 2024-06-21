@@ -91,7 +91,7 @@ We have created a service account with the name `cluster-autoscaler` with the he
 ```
 
 **ii.** Inside the `ClusterRoleBinding` config:
-```sh
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -110,7 +110,7 @@ subjects:
 ```
 
 **iii.** Inside the `RoleBinding` config:
-```sh
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
