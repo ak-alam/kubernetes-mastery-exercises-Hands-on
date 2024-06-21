@@ -74,6 +74,15 @@ To deploy the cluster autoscalar use the **cluster-autoscalar.yaml** deployment 
             - --skip-nodes-with-system-pods=false
 ```
 
+After udpating the cluster name apply the deployment to the cluster.
+```sh
+kubectl apply -f cluster-autoscalar.yaml
+```
+
+<span style="color: red;">Important: This text will be red.</span>
+
+
+
 ## Examples
 
 Here are some example configurations and usage scenarios for the Cluster Autoscaler:
