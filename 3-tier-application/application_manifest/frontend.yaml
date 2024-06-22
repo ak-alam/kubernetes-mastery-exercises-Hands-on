@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: frontend-api-secret
+data:
+  REACT_APP_BACKEND_URL: aHR0cHM6Ly9hcGkuYWtiYXJhbGFtLm1lCg==
+
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-api
+  labels:
+    app: frontend-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-api
+  template:
+    metadata:
+      labels:
+        app: frontend-api
+    spec:
+      containers:
+      - name: frontend-api
+        image: script0kid/article-frontend:v1
+        ports:
+          - containerPort: 3000
+        env:
+          - name: REACT_APP_BACKEND_URL
+            valueFrom:
+              secretKeyRef:
+                name: frontend-api-secret
+                key: REACT_APP_BACKEND_URL
+      volumes:
+        -  name: frontend-api-volume
+           emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-api-svc
+  labels:
+    app: frontend-api-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: frontend-api
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000

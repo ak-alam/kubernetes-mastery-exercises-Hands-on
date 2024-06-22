@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-sts-secret
+data:
+  MYSQL_DATABASE: YXJ0aWNsZQ==
+  MYSQL_PASSWORD: cGFzc3dvcmQ=
+  MYSQL_ROOT_PASSWORD: cGFzc3dvcmQ=
+  MYSQL_USER: dXNlcg==
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-db-sts
+  labels:
+    app: mysql-db-sts
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-db-sts
+  template:
+    metadata:
+      labels:
+        app: mysql-db-sts
+    spec:
+      containers:
+      - name: mysql-db-sts
+        image: mysql:5.7
+        ports:
+          - containerPort: 3306
+        env:
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: db-sts-secret #name of the db secrets
+                key: MYSQL_DATABASE
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-sts-secret
+                key: MYSQL_PASSWORD
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-sts-secret
+                key: MYSQL_ROOT_PASSWORD
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-sts-secret
+                key: MYSQL_USER
+        volumeMounts:
+          - name: mysql-sts-volume
+            mountPath: /var/lib/mysql
+      volumes: 
+        - name: mysql-sts-volume
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-sts-svc
+  labels:
+    app: mysql-sts-svc
+spec:
+  clusterIP: None
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: mysql-db-sts
+
