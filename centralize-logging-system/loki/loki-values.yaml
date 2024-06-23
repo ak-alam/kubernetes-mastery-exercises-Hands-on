@@ -1,0 +1,41 @@
+loki:
+  auth_enabled: false
+  commonConfig:
+    path_prefix: /var/loki
+    replication_factor: 1
+  compactor:
+    apply_retention_interval: 1h
+    compaction_interval: 5m
+    retention_delete_worker_count: 500
+    retention_enabled: true
+    shared_store: s3
+    working_directory: /data/compactor
+  config:  
+      schema_config:
+        configs:
+        - from: 2020-05-15
+          store: boltdb-shipper
+          object_store: s3
+          schema: v11
+          index:
+            period: 24h
+            prefix: loki_index_
+        
+      storage_config:
+        aws:
+          region: eu-central-1
+          bucketnames: alex-loki-test
+          s3forcepathstyle: false
+          #s3forcepathstyle: true  <-- This is the main culprit; comment it out ? -? https://github.com/grafana/loki/issues/7024
+        boltdb_shipper:
+          shared_store: s3
+          cache_ttl: 24h
+  serviceAccount:
+    create: true
+    name: loki-sa
+    annotations:
+       eks.amazonaws.com/role-arn: "arn:aws:iam::09xx7:role/loki_s3_role"
+  write:
+     replicas: 2
+  read:
+    replicas: 1

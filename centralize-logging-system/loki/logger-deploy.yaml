@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logging-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: logging
+  template:
+    metadata:
+      labels:
+        app: logging
+    spec:
+      containers:
+      - name: logging
+        image: script0kid/logging-test:v0
+        ports:
+        - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: logging-svc
+spec:
+  selector:
+    app: logging
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-log-generator
+  labels:
+    app: docker-log-generator
+spec:
+  selector:
+    matchLabels:
+      app: docker-log-generator
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: docker-log-generator
+    spec:
+      containers:
+      - name: docker-log-generator
+        imagePullPolicy: Always
+        image: coffeeapplied/dockerloggenerator:1.0.2
+        resources:
+          requests:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
