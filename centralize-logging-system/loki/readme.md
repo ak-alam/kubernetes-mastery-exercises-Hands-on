@@ -22,6 +22,7 @@ helm upgrade --install promtail grafana/promtail --values promtail-values.yaml -
 
 ## Install loki 
 helm upgrade --install loki grafana/loki-distributed -n monitoring
+helm upgrade --install loki grafana/loki-distributed --values loki-values.yaml -n monitoring
 
 
 
