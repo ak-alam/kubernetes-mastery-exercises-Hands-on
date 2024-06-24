@@ -23,8 +23,8 @@ loki:
         
       storage_config:
         aws:
-          region: eu-central-1
-          bucketnames: alex-loki-test
+          region: us-east-1
+          bucketnames: loki-centralize-logging-bucket
           s3forcepathstyle: false
           #s3forcepathstyle: true  <-- This is the main culprit; comment it out ? -? https://github.com/grafana/loki/issues/7024
         boltdb_shipper:
@@ -34,7 +34,7 @@ loki:
     create: true
     name: loki-sa
     annotations:
-       eks.amazonaws.com/role-arn: "arn:aws:iam::09xx7:role/loki_s3_role"
+       eks.amazonaws.com/role-arn: "arn:aws:iam::360286454260:role/loki-s3-service-account-role"
   write:
      replicas: 2
   read:
