@@ -21,8 +21,11 @@ Add default prometheus datasource and addtional data source loki
 helm upgrade --install promtail grafana/promtail --values promtail-values.yaml -n monitoring
 
 ## Install loki 
-helm upgrade --install loki grafana/loki-distributed --values loki-values -n monitoring
+helm upgrade --install loki grafana/loki-distributed --values loki-values.yaml -n monitoring
 
+
+
+helm upgrade --install loki grafana/loki-stack --values loki-values.yaml -n monitoring
 
 
 ### Grafana credentials
