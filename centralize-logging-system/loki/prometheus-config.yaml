@@ -11,7 +11,9 @@ grafana:
   additionalDataSources:
     - name: Loki
       type: loki
-      url: http://loki.monitoring.svc.cluster.local
+      url: http://loki:3100
+      
+      # http://loki.monitoring.svc.cluster.local
            
          # http://loki-loki-distributed-query-frontend.monitoring:3100
          # http://loki-loki-distributed-gateway.monitoring.svc.cluster.local
