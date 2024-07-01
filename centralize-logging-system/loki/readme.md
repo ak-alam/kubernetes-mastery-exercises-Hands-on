@@ -1,8 +1,9 @@
 
-# Cloud Native Logging System With Grafana Loki
-Refence to 
+# Centralize Logging with Grafana Loki
+Reference to my [Medium Blog](https://akbaralam.medium.com/cloud-native-logging-system-with-grafana-loki-29d8013b472c).
+
 ## Setting up loki in kubernetes (AWS EKS)
-Enough theory let’s play. I will install loki, deploy an application and perform all the log collection process.
+I will install loki, deploy an application and perform all the log collection process.
 
 ## Prerequisites:
 1. Kubernetes Cluster
@@ -50,7 +51,6 @@ grafana:
     - name: Loki
       type: loki
       url: http://loki-loki-distributed-query-frontend.monitoring:3100 
-
 ```
 
 ```bash
@@ -90,7 +90,8 @@ helm upgrade --install loki grafana/loki-distributed -n monitoring
 
 After successfully deploying loki and it’s supporting component. Access the grafana dashboard by using port forwarding using the commands below. Grafana dashboard can be accessible on http://localhost:8080
 
-### Grafana credentials
+
+**Grafana Credentials**
 user: admin
 pass: prom-operator
 
