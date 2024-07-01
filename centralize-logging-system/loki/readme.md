@@ -150,4 +150,5 @@ In the grafana dashboard
 3. To qurey log data filters (container=container-name), (container=docker-log-generator) and the log query will be {container=”docker-log-generator”} |= ``
 4. The log query will print out all the logs related the docker-log-generator pod. Explore more queries and analyze log data.
 
+
 ![alt text](../../misc/static/grafana.png)
