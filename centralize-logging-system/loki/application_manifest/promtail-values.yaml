@@ -1,0 +1,6 @@
+#promtail-values.yaml
+
+config:
+  serverPort: 8080
+  clients:
+    - url: http://loki-loki-distributed-gateway/loki/api/v1/push   #http://<loki-url>/loki/api/v1/push
